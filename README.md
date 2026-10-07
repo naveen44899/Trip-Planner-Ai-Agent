@@ -12,6 +12,7 @@ pip install uv
 uv venv --python=3.11
 ---
 
+
 3.Activate vev
 
 --bash
@@ -24,3 +25,6 @@ uv venv --python=3.11
  ---
 
  5.download pgadmin for windows  to visual 
+
+
+# to get langsmith api key go to setting
