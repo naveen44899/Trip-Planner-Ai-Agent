@@ -122,7 +122,7 @@ Important:
 
 
     return {"messages":[response],
-            "llm_calss":state.get("llm_calls",0)+1}
+            "llm_calls":state.get("llm_calls",0)+1}
 
 
 graph = StateGraph(TravelState)
@@ -169,12 +169,18 @@ def run_travel_agent(user_input:str,thread_id:str | None=None):
     config = {"configurable":{"thread_id":thread_id}}
 
 
-    result = travel_graph.invoke({"messages":[HumanMessage(content=user_input)],"user_query":user_input,"fight_results":"","hotel_results":"","itinerary":"","llm_calls":0},config=config)
+    result = travel_graph.invoke({"messages":[HumanMessage(content=user_input)],"user_query":user_input,"flight_results":"","hotel_results":"","itinerary":"","llm_calls":0},config=config)
 
     final_answer = result["messages"][-1].content
 
 
-    return {"thread_id":thread_id,"answer":final_answer,"flight_results":result.get("flight_results",""),"hotel_results":result.get("hotel_results",""),"itinearay":result.get("itinerary",""),"llm_calls":result.get("llm-calls",0),}
+    return {"thread_id":thread_id,"answer":final_answer,"flight_results":result.get("flight_results",""),"hotel_results":result.get("hotel_results",""),"itinerary": result.get("itinerary", ""),"llm_calls":result.get("llm_calls",0),}
+
+
+
+
+
+                         
 
 
 
